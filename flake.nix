@@ -18,8 +18,8 @@
     packages = forEachSystem (system: let
       pkgs = nixpkgs.legacyPackages.${system};
     in rec {
-      default = compiz;
-      compiz = pkgs.callPackage ./. {};
+      default = compiz-reloaded;
+      compiz-reloaded = pkgs.callPackage ./. {};
     });
   };
 }
