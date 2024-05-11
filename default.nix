@@ -3,6 +3,9 @@
   fetchurl,
   fetchFromGitLab,
   lib,
+  autoconf,
+  automake,
+  libtool,
   cmake,
   pkg-config,
   makeWrapper,
@@ -37,7 +40,9 @@ stdenv.mkDerivation (f: {
   };
 
   nativeBuildInputs = [
-    cmake
+    autoconf
+    automake
+    libtool
     pkg-config
     makeWrapper
     xorg.libXdmcp.dev
@@ -70,13 +75,13 @@ stdenv.mkDerivation (f: {
     xorgserver
   ];
 
-  postInstall = ''
-    sed -i "s|/usr/bin/metacity|${gnome.metacity}/bin/metacity|" $out/bin/compiz-decorator
-    sed -i "s|/usr/bin/compiz-decorator|$out/bin/compiz-decorator|" $out/share/compiz/decor.xml
-    wrapProgram $out/bin/compiz \
-      --suffix LD_LIBRARY_PATH : "$out/lib" \
-      --suffix COMPIZ_BIN_PATH : "$out/bin/"
-  '';
+#  postInstall = ''
+#    sed -i "s|/usr/bin/metacity|${gnome.metacity}/bin/metacity|" $out/bin/compiz-decorator
+#    sed -i "s|/usr/bin/compiz-decorator|$out/bin/compiz-decorator|" $out/share/compiz/decor.xml
+#    wrapProgram $out/bin/compiz \
+#      --suffix LD_LIBRARY_PATH : "$out/lib" \
+#      --suffix COMPIZ_BIN_PATH : "$out/bin/"
+#  '';
 
   patches = [
   
