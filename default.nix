@@ -1,6 +1,7 @@
 {
   stdenv,
   fetchurl,
+  fetchFromGitLab,
   lib,
   cmake,
   pkg-config,
@@ -32,7 +33,7 @@ stdenv.mkDerivation (f: {
     owner = "compiz";
     repo = "compiz-core";
     rev = "fe274c9f3d8d657dffaaa594be4c851e40ad623c";
-   # todo  hash = "";
+    hash = "sha256-XSyh7c03TnkZJ+Ij8WHyBWrgCCH4pcgt5hRswqi52kQ=";
   };
 
   nativeBuildInputs = [
