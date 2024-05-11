@@ -12,7 +12,7 @@
     forEachSystem = nixpkgs.lib.genAttrs (import systems);
   in {
     overlays.default = final: prev: {
-      compiz = final.callPackage ./. {};
+      compiz-reloaded = final.callPackage ./. {};
     };
 
     packages = forEachSystem (system: let
