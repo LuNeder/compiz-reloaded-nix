@@ -25,12 +25,14 @@
   ...
 }:
 stdenv.mkDerivation (f: {
-  pname = "compiz";
-  version = "0.9.14.2";
-  shortVersion = "${lib.versions.majorMinor f.version}.${lib.versions.patch f.version}";
-  src = fetchurl {
-    url = "https://launchpad.net/compiz/${f.shortVersion}/${f.version}/+download/compiz-${f.version}.tar.xz";
-    hash = "sha256-z6Bh6TsDInX/nnBB9YKo9tWuJxz4qJ5rx049NjWZnTw=";
+  pname = "compiz-reloaded";
+  version = "0.8.18git.20240206T150536~fe274c9f";
+#  shortVersion = "${lib.versions.majorMinor f.version}.${lib.versions.patch f.version}";
+  src = fetchFromGitLab {
+    owner = "compiz";
+    repo = "compiz-core";
+    rev = "fe274c9f3d8d657dffaaa594be4c851e40ad623c";
+   # todo  hash = "";
   };
 
   nativeBuildInputs = [
@@ -76,11 +78,7 @@ stdenv.mkDerivation (f: {
   '';
 
   patches = [
-    ./patches/reverse-unity-config.patch
-    ./patches/focus-prevention-disable.patch
-    ./patches/gtk-extents.patch
-    ./patches/screenshot-launch-fix.patch
-    ./patches/no-compile-gschemas.patch
+  
   ];
 
   cmakeFlags = [
