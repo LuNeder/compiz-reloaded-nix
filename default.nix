@@ -56,6 +56,7 @@ stdenv.mkDerivation (f: {
     glibmm
     gnome.metacity
     intltool
+#    libmarco-private
     libnotify
     libstartup_notification
     libwnck3
@@ -74,7 +75,17 @@ stdenv.mkDerivation (f: {
     xorg.libXdmcp.dev
     xorgserver
   ];
-
+  buildPhase = ''
+  NOCONFIGURE=1 ./autogen.sh
+  ./configure \
+\ #  --enable-marco   \
+  --with-gtk=3.0   \
+  --with-default-plugins=core,ccp,decoration,dbus,commands,ezoom,fade,minimize,mousepoll,move,place,png,regex,resize,session,snap,switcher,vpswitch,wall,workarounds,matecompat
+  make
+  '';
+  installPhase = ''
+  make install
+  '';
 #  postInstall = ''
 #    sed -i "s|/usr/bin/metacity|${gnome.metacity}/bin/metacity|" $out/bin/compiz-decorator
 #    sed -i "s|/usr/bin/compiz-decorator|$out/bin/compiz-decorator|" $out/share/compiz/decor.xml
@@ -88,8 +99,7 @@ stdenv.mkDerivation (f: {
   ];
   
   configureFlags = [
-    "--disable-static"
-    "--enable-marco"
+ #   "--enable-marco"
     "--with-gtk=3.0"
     "--with-default-plugins=core,ccp,decoration,dbus,commands,ezoom,fade,minimize,mousepoll,move,place,png,regex,resize,session,snap,switcher,vpswitch,wall,workarounds,matecompat"
   ];
