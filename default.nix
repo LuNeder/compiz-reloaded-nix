@@ -76,15 +76,17 @@ stdenv.mkDerivation (f: {
     xorgserver
   ];
   buildPhase = ''
-  NOCONFIGURE=1 ./autogen.sh
+  NOCONFIGURE=1 ./autogen.sh --prefix=$out
   ./configure \
-\ #  --enable-marco   \
   --with-gtk=3.0   \
+  --host=x86_64-unknown-linux-gnu \
+  --prefix=$out \
   --with-default-plugins=core,ccp,decoration,dbus,commands,ezoom,fade,minimize,mousepoll,move,place,png,regex,resize,session,snap,switcher,vpswitch,wall,workarounds,matecompat
-  make
+  PREFIX=$out make
   '';
   installPhase = ''
-  make install
+  echo AAAAAAAAAA-------------------------AAAAAAAAAAAA
+  PREFIX=$out make install
   '';
 #  postInstall = ''
 #    sed -i "s|/usr/bin/metacity|${gnome.metacity}/bin/metacity|" $out/bin/compiz-decorator
@@ -101,6 +103,7 @@ stdenv.mkDerivation (f: {
   configureFlags = [
  #   "--enable-marco"
     "--with-gtk=3.0"
+    "--host=x86_64-unknown-linux-gnu"
     "--with-default-plugins=core,ccp,decoration,dbus,commands,ezoom,fade,minimize,mousepoll,move,place,png,regex,resize,session,snap,switcher,vpswitch,wall,workarounds,matecompat"
   ];
 
