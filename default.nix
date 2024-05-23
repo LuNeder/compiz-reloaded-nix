@@ -85,7 +85,6 @@ stdenv.mkDerivation (f: {
   PREFIX=$out make
   '';
   installPhase = ''
-  echo AAAAAAAAAA-------------------------AAAAAAAAAAAA
   PREFIX=$out make install
   '';
 #  postInstall = ''
