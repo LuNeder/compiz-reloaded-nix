@@ -3,8 +3,7 @@
 This is a (still WIP) attempt to package compiz-reloaded for NixOS.
 
 TODO:
-- [ ] Compiz-core
-  - Compiles, but screen stays black when running compiz --replace (at least on virtualbox, please do test it on a real system and let me know)
+- [x] Compiz-core
 - [ ] Compiz-plugins-main
 - [ ] Compiz-plugins-extra
 - [ ] Emerald
