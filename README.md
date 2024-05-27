@@ -1,6 +1,6 @@
 # Compiz for NixOS
 
-See the [compiz09](https://github.com/LuNeder/compiz-reloaded-nix/tree/compiz09) branch, Compiz 0.9 is fully packaged there and works!
+**See the [compiz09](https://github.com/LuNeder/compiz-reloaded-nix/tree/compiz09) branch, Compiz 0.9 is fully packaged there and works!**
 
 This is a (still WIP) attempt to package compiz-reloaded for NixOS.
 
