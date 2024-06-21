@@ -91,6 +91,13 @@ stdenv.mkDerivation (f: {
     xorgserver
   ];
 
+  dontWrapGApps = true;
+
+  pythonPath = with python3Packages; [
+    pycairo
+    pygobject3
+  ];
+
   buildPhase = ''
   cd ./compiz-core
   NOCONFIGURE=1 ./autogen.sh --prefix=$out
@@ -121,13 +128,11 @@ stdenv.mkDerivation (f: {
     # Wrap CCSM with GApps and Python path
     makeWrapperArgs+=("''${gappsWrapperArgs[@]}")
     wrapPythonPrograms
-    for i in $out/bin/*
-    do
-      wrapProgram $i \
-        --prefix PATH : ${lib.makeBinPath [
-          (python3.withPackages(pp: [pp.pygobject3]))
-        ]}
-    done
+    wrapProgram $out/bin/ccsm \
+      --prefix PATH : ${lib.makeBinPath [
+        (python3.withPackages(pp: [pp.pygobject3]))
+      ]}
+    
   '';
 
   patches = [
