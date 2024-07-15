@@ -12,7 +12,7 @@
     forEachSystem = nixpkgs.lib.genAttrs (import systems);
   in {
     overlays.default = final: prev: {
-      compiz = final.callPackage ./. { python3 = pkgs.python311; python3Packages = pkgs.python311Packages; };
+      compiz = final.callPackage ./. { python3 = final.python311; python3Packages = final.python311Packages; };
     };
 
     packages = forEachSystem (system: let
