@@ -67,6 +67,8 @@ stdenv.mkDerivation (f: {
     mesa_glu
     pcre2
     protobuf
+    python3Packages.distlib
+    python3Packages.distutils-extra
     xorg.libXcursor
     xorg.libXdmcp
     xorgserver
