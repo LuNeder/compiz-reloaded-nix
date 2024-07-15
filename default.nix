@@ -43,6 +43,8 @@ stdenv.mkDerivation (f: {
     makeWrapper
     pcre2
     pkg-config
+    python3Packages.distlib
+    python3Packages.distutils-extra
     python3Packages.cython
     python3Packages.setuptools
     python3Packages.wrapPython
@@ -80,6 +82,8 @@ stdenv.mkDerivation (f: {
   pythonPath = with python3Packages; [
     pycairo
     pygobject3
+    distutils-extra
+    distlib
   ];
 
   postFixup = ''
@@ -98,7 +102,7 @@ stdenv.mkDerivation (f: {
     do
       wrapProgram $i \
         --prefix PATH : ${lib.makeBinPath [
-          (python3.withPackages(pp: [pp.pygobject3]))
+          (python3.withPackages(pp: [pp.pygobject3 pp.distutils-extra pp.distlib]))
         ]}
     done
   '';
