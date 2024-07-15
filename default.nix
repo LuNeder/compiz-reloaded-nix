@@ -43,6 +43,7 @@ stdenv.mkDerivation (f: {
     makeWrapper
     pcre2
     pkg-config
+    (python3Packages.python.withPackages (p: [ p.setuptools ]))
     python3Packages.distlib
     python3Packages.distutils-extra
     python3Packages.cython
@@ -67,8 +68,6 @@ stdenv.mkDerivation (f: {
     mesa_glu
     pcre2
     protobuf
-    python3Packages.distlib
-    python3Packages.distutils-extra
     xorg.libXcursor
     xorg.libXdmcp
     xorgserver
@@ -84,8 +83,6 @@ stdenv.mkDerivation (f: {
   pythonPath = with python3Packages; [
     pycairo
     pygobject3
-    distutils-extra
-    distlib
   ];
 
   postFixup = ''
