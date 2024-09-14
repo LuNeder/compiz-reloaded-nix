@@ -7,6 +7,7 @@
   fuse,
   glibmm,
   gnome,
+  metacity,
   gobject-introspection,
   gtk3,
   intltool,
