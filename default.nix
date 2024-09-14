@@ -56,7 +56,7 @@ stdenv.mkDerivation (f: {
     cairo
     fuse
     glibmm
-    gnome.metacity
+    metacity
     gobject-introspection
     gtk3
     intltool
@@ -92,7 +92,7 @@ stdenv.mkDerivation (f: {
 
     wrapProgram "$out/bin/compiz-decorator" \
       --prefix COMPIZ_BIN_PATH : "$out/bin/" \
-      --prefix PATH : "${gnome.metacity}/bin"
+      --prefix PATH : "${metacity}/bin"
 
     # Wrap CCSM with GApps and Python path
     makeWrapperArgs+=("''${gappsWrapperArgs[@]}")
