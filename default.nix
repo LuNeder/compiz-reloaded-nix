@@ -69,7 +69,7 @@ stdenv.mkDerivation (f: {
     cairo
     fuse
     glibmm
-  #  gnome.metacity
+  # metacity
     intltool
     libnotify
     libstartup_notification
