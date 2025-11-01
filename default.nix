@@ -13,7 +13,7 @@
   intltool,
   libnotify,
   libstartup_notification,
-  libwnck3,
+  libwnck,
   libxml2,
   libxslt,
   makeWrapper,
@@ -63,7 +63,7 @@ stdenv.mkDerivation (f: {
     intltool
     libnotify
     libstartup_notification
-    libwnck3
+    libwnck
     libxml2
     libxslt
     mesa_glu
