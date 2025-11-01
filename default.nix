@@ -27,7 +27,7 @@
   python3Packages,
   xorg,
   xorgserver,
-  wrapGAppsHook,
+  wrapGAppsHook3,
   ...
 }:
 stdenv.mkDerivation (f: {
@@ -61,7 +61,7 @@ stdenv.mkDerivation (f: {
     xorg.libXdmcp.dev
     pcre2.dev
     libxml2.dev
-    wrapGAppsHook
+    wrapGAppsHook3
     python3Packages.wrapPython
   ];
   buildInputs = [
